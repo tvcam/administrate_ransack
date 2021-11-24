@@ -25,6 +25,8 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
 
+  gem 'administrate-bootstrap-theme'
+
   # Tools
   gem 'pry-rails'
 end
