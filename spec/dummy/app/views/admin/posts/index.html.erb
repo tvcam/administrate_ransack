@@ -2,31 +2,6 @@
   <%= display_resource_name(page.resource_name) %>
 <% end %>
 
-<% content_for(:stylesheet) do %>
-<style>
-.main-content__body {
-  display: inline-block;
-  width: calc(100% - 320px);
-  vertical-align: top;
-}
-
-[data-administrate-ransack-filters] {
-  display: inline-block;
-  padding-left: 10px;
-  padding-top: 10px;
-  width: 300px;
-}
-
-[data-administrate-ransack-filters] .filter {
-  margin-bottom: 10px;
-}
-
-[data-administrate-ransack-filters] .filters-buttons {
-  margin-top: 30px;
-}
-</style>
-<% end %>
-
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title" id="page-title">
     <%= content_for(:title) %>
@@ -52,34 +27,38 @@
   </div>
 </header>
 
-<section class="main-content__body main-content__body--flush">
-  <%= render(
-    "collection",
-    collection_presenter: page,
-    collection_field_name: resource_name,
-    page: page,
-    resources: resources,
-    table_title: "page-title"
-  ) %>
+<div class="row">
+  <section class="main-content__body main-content__body--flush col-sm-9">
+    <%= render(
+      "collection",
+      collection_presenter: page,
+      collection_field_name: resource_name,
+      page: page,
+      resources: resources,
+      table_title: "page-title"
+    ) %>
 
-  <%= paginate resources %>
-</section>
+    <%= paginate resources %>
+  </section>
 
-<% attribute_types = {
-  author: Administrate::Field::BelongsTo,
-  title: Administrate::Field::String,
-  category: Administrate::Field::Select.with_options(collection: Post.categories.to_a),
-  published: Administrate::Field::Boolean,
-  position: Administrate::Field::Number,
-  dt: Administrate::Field::Date,
-  created_at: Administrate::Field::DateTime,
-  recents: Administrate::Field::DateTime,
-  by_category: Administrate::Field::String,
-  tags: Administrate::Field::HasMany
-} %>
+  <div class="col-sm-3">
+    <% attribute_types = {
+      author: Administrate::Field::BelongsTo,
+      title: Administrate::Field::String,
+      category: Administrate::Field::Select.with_options(collection: Post.categories.to_a),
+      published: Administrate::Field::Boolean,
+      position: Administrate::Field::Number,
+      dt: Administrate::Field::Date,
+      created_at: Administrate::Field::DateTime,
+      recents: Administrate::Field::DateTime,
+      by_category: Administrate::Field::String,
+      tags: Administrate::Field::HasMany
+    } %>
 
-<%= render(
-  'administrate_ransack/filters',
-  attribute_types: attribute_types
-) %>
-<%# attribute_types: page.attribute_types %>
+    <%= render(
+      'administrate_ransack/filters',
+      attribute_types: attribute_types
+    ) %>
+  </div>
+</div>
+
