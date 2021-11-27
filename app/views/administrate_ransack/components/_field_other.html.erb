@@ -1,5 +1,8 @@
-<%= form.label(label) %>
-<%= form.search_field(field) %>
+<div class="row mb-3">
+  <%= form.label(label, class: 'pl-0 form-label') %>
+  <%= form.search_field(field, class: 'form-control form-control-sm') %>
+</div>
+
 
 <!-- unsupported Field::HasOne -->
 <!-- unsupported Field::Polymorphic -->

@@ -1,7 +1,23 @@
-<%= form.label(label) %>
 <% if model.ransackable_scopes.include?(field) %>
-  <%= form.date_field(field, value: form.object.send(field)) %>
+  <div class="row mb-3">
+    <%= form.label(label, class: 'pl-0 form-label') %>
+
+    <div class="row">
+      <%= form.date_field(field, value: form.object.send(field), class: 'form-control form-control-sm') %>
+    </div>
+  </div>
 <% else %>
-  <%= form.date_field("#{field}_gteq") %>
-  <%= form.date_field("#{field}_lteq") %>
+  <div class="row mb-3">
+    <%= form.label(label, class: 'pl-0 form-label') %>
+
+    <div class="row p-0">
+      <div class="col-sm-6 pe-0">
+        <%= form.date_field("#{field}_gteq", class: 'form-control form-control-sm') %>
+      </div>
+
+      <div class="col-sm-6 pe-0">
+        <%= form.date_field("#{field}_lteq", class: 'form-control form-control-sm') %>
+      </div>
+    </div>
+  </div>
 <% end %>
