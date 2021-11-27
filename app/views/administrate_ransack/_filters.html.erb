@@ -6,6 +6,8 @@
         if(typeof options !== 'object') options = { enableTime: true };
         window.flatpickr('.filter [type="datetime-local"]', options);
       }
+
+      $(".filter select").selectize({})
     });
   </script>
 <% end %>
