@@ -4,7 +4,7 @@
   <% collection = association.klass.send(association.klass.respond_to?(:admin_scope) ? :admin_scope : :all) %>
 
   <div class="row mb-3">
-    <%= form.label(label, class: 'pl-0 form-label') %>
+    <%= form.label(label, class: 'pe-0 form-label') %>
     <%= form.collection_select(field_key, collection, :id, desc, { include_blank: true }, { multiple: true, class: 'form-control form-control-sm' }) %>
   </div>
 <% end %>

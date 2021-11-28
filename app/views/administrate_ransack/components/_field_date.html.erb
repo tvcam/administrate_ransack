@@ -1,6 +1,6 @@
 <% if model.ransackable_scopes.include?(field) %>
   <div class="row mb-3">
-    <%= form.label(label, class: 'pl-0 form-label') %>
+    <%= form.label(label, class: 'pe-0 form-label') %>
 
     <div class="row">
       <%= form.date_field(field, value: form.object.send(field), class: 'form-control form-control-sm') %>
@@ -8,7 +8,7 @@
   </div>
 <% else %>
   <div class="row mb-3">
-    <%= form.label(label, class: 'pl-0 form-label') %>
+    <%= form.label(label, class: 'pe-0 form-label') %>
 
     <div class="row p-0">
       <div class="col-sm-6 pe-0">
